@@ -13,7 +13,7 @@
             <button id="submit">Enter</button>
         </div>
         <table>
-          <thead>
+            <thead>
             <tr>
                 <th>
                     Description
@@ -22,7 +22,7 @@
 
                 </th>
             </tr>
-          </thead>
+            </thead>
             <tbody id="incomplete">
 
             </tbody>
@@ -86,7 +86,7 @@
         newRow.appendChild(descriptionTag);
         let actionTag = document.createElement('td');
         let action = document.createElement('button');
-        action.textContent = "Mark Complete";
+        action.textContent = "Mark Incomplete";
         action.addEventListener('click', function (){
             newRow.remove()
             addItemToIncompleteTable(toDoItem);
@@ -94,6 +94,31 @@
         actionTag.appendChild(action);
         newRow.appendChild(actionTag);
         complete.appendChild(newRow);
+    }
+    function addItemToTable(toDoItem, isComplete){
+        let newRow = document.createElement('tr');
+        let descriptionTag = document.createElement('td');
+        descriptionTag.textContent = toDoItem;
+        newRow.appendChild(descriptionTag);newRow.appendChild(descriptionTag);
+        let actionTag = document.createElement('td');
+        let action = document.createElement('button');
+
+        if (isComplete){
+            action.textContent = "Mark Incomplete";
+            action.addEventListener('click', function () {
+                newRow.remove()
+            })
+        } else {
+            action.textContent = "Mark Complete";
+            action.addEventListener('click', function () {
+                newRow.remove()
+            })
+    }
+    addItemToTable(toDoItem, true)
+    addItemToTable(toDoItem, false)
+        actionTag.appendChild(action);
+        newRow.appendChild(actionTag);
+        incomplete.appendChild(newRow)
     }
 </script>
 </body>
